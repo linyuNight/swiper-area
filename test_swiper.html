@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>命名空间</title>
+	<meta charset="utf-8" /> <meta name="viewport" content="initial-scale=1,width=device-width,maximum-scale=2,minimum-scale=1,user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="swiper.min.css">
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>	
+	<script type="text/javascript" src="swiper.min.js"></script>
+
+	<style type="text/css">
+	*{
+		padding: 0;margin: 0;
+	}
+	.swiper-container{
+		float:left;
+		width:100px;
+		height:60px;
+		margin-right:20px;
+		overflow: visible!important;
+	}
+	.swiper-wrapper{
+		width:100px;
+		height:30px;
+	}
+	.swiper-slide{
+		width:100px;
+		height:30px;
+		line-height: 15px;
+		text-align: center;
+		box-sizing: border-box;
+		border-top: 1px solid #ccc;
+	}
+	.visi-box{
+		margin-top: 100px;
+		width:100%;
+		height:120px;
+		overflow: hidden;
+	}
+	/*.swiper-slide:nth-child(even){
+		background: red;
+	}
+	.swiper-slide:nth-child(odd){
+		background: blue;
+	}*/
+	</style>
+</head>
+<body>
+	<div class="visi-box">
+		<div class="swiper-container" id="category_container">
+			<div class="swiper-wrapper" id="category">
+			</div>
+		</div>
+		<div class="swiper-container" id="menu_container">
+			<div class="swiper-wrapper" id="menu">
+			</div>
+		</div>
+		<div class="swiper-container" id="area_container">
+			<div class="swiper-wrapper" id="area">
+			</div>
+		</div>
+	</div>
+	<button>点击</button>
+
+	<script type="text/javascript">
+		var typeArray = new Array();
+		// typeArray[0] = new Array("-请选择类别-", "-请选择类别-$-请选择名称-");
+		typeArray[0] = new Array("母婴用品", "婴儿用品,冰宝贴|儿童餐桌|儿童汽车安全座椅|防湿疹膏|纺织围兜|奶粉储存盒|奶瓶|奶瓶刷|奶瓶刷晾干架|奶嘴|尿布软膏|暖奶器|食物研磨器|塑胶围嘴|洗鼻液|牙胶|摇椅|背带|浴盆|纸尿裤|指甲钳|紫草膏|婴儿床|爬行垫|婴儿喂食碗勺|洗发水|润肤护肤霜|防晒霜|面霜|婴儿沐浴露|爽身粉|婴儿牙刷|婴儿毛巾|婴儿服饰|母婴消毒用品|童车|手推车$妈妈用品,储乳袋|电动吸奶器|防溢乳垫|去妊娠纹霜|湿纸巾|手动吸奶器|卫生巾|性别测试纸|乳头霜|托腹带/塑身衣|孕妇内衣|孕妇装");
+		typeArray[1] = new Array("食品、保健及饮料", "食品,蜂蜜|核桃油|坚果|可可粉|麦片|牛肉干|泡芙|巧克力|溶豆|糖果|芝士条|方便面|薯片|果脯$婴儿辅食,奶粉|饼干|果泥/蔬菜泥|米粉$保健品,鱼油|蜂胶|辅酶|钙片/液体钙|卵磷脂|葡萄籽精华胶囊|维骨力|维生素|叶酸|益生菌|银杏精华片|孕妇海藻|左旋肉碱|胶原蛋白液|蛋白粉|叶黄素|消化酶|补铁滴剂|软骨素|氨基酸|减肥保健品|DHA|其他保健品$调味品,鸡精|酱油|调味品|盐$饮料,茶叶|茶饮料|功能饮料|固体饮料|果汁|咖啡|咖啡豆|奶茶|乳饮料|蔬菜汁|碳酸饮料");
+		typeArray[2] = new Array("服装服饰", "外衣,冲锋衣|大衣|夹克|马夹|皮衣|外衣|卫衣|西装|羽绒服$衬衫/T恤衫,衬衫/T恤衫$外裤,牛仔裤|外裤|休闲长裤$其他衣着,背心|吊带|皮裤|短裤|连体衣|毛衣/针织衫|裙子|泳装|童装|披肩/披风$内衣裤,内衣/内裤|睡衣|塑身衣/裤|文胸$配饰,耳环（非金银钻）|耳坠（非金银钻）|发饰|戒指（非金银钻）|领带|帽子|皮带|皮手套|手链（非金银钻）|手套|丝巾|太阳眼镜|头巾|头饰|袜子|围巾|项链（非金银钻）|胸针|眼镜|腰带|钥匙链|袖扣|ZIPPO打火机（无油）");
+		typeArray[3] = new Array("家纺", "家纺用品,护腰带|包巾|被套|被子|餐桌布|窗帘|床单/床罩|地毯|毛巾|毛巾被|毛毯|沙发套|睡袋|椅垫|浴巾|枕头|坐垫");
+		typeArray[4] = new Array("箱包和鞋靴", "箱,儿童旅行箱|行李箱|收纳箱$包,背包|电脑包|儿童书包|帆布包|化妆包|挎包/单肩包|零食袋|钱包/卡包|手提包|信封包|腰包|钥匙包$鞋靴,休闲鞋|高跟鞋|单鞋|靴子|帆布鞋|脚趾鞋|凉鞋/拖鞋|皮鞋|童鞋|雪地靴|雨鞋|运动鞋");
+		typeArray[5] = new Array("表、钟以及配件、附件", "表,电子表|光动能手表|机械表|其他表|石英表|太阳能手表|儿童手表$钟,挂钟|落地钟|闹钟|台钟|座钟$钟表配件、附件,钟表组件|钟表屏幕保护膜");
+		typeArray[6] = new Array("化妆品", "芳香类化妆品,花露水$护理类化妆品,按摩油|防晒霜（露、乳液）|隔离霜|护肤霜|护手霜|精华液|精油|面膜|护肤乳液|磨砂膏|祛斑霜|去角质膏|润唇膏|爽肤水|洗面奶|眼膜|眼霜|止汗露|鳄梨油|面霜|乳液|其他护理类化妆品$清洁、洗护用品,发蜡|发油|护发素|女性护理液|剃须膏|漱口水|清洁剂|沐浴露|洗发露|香皂|卸妆水/油|磨砂/浴盐|发膜$美容/修饰类化妆品,唇彩|唇膏|唇线笔|定型水（啫哩、摩丝）|粉底液|丰（美、健）乳霜|睫毛液（膏）|紧致霜|口红|眉笔|清洁霜(蜜)|祛疤膏|舒缓霜|脱毛剂|万能油|纤体霜（膏）|眼线笔（液，膏）|眼影|腮红|遮瑕膏|粉饼|其他美容修饰类化妆品|染发/造型");
+		typeArray[7] = new Array("家用医疗、保健及美容器材", "家用医疗器材,滴眼液|病人用拐杖|病人用轮椅|冲牙器|创口贴|疤痕贴|电子温度计|耳温枪|呼吸机|家用血糖计|空气制氧机|排卵测试棒|雾化机|洗鼻器|血糖试纸|血压计|清凉软膏|温度计|助眠机|验孕试纸/验孕棒|驱蚊膏/驱蚊液|糖尿病测试纸|疼痛理疗仪$家用保健器材,口罩|按摩床|按摩椅|助行鞋$家用美容器材,化妆/美容专用工具等|粉扑|蒸汽眼罩|化妆刷|镜子|梳子|喷雾器|脱毛器|洗脸刷/洁面仪|修眉器|蒸汽仪|化妆棉|纹身机|美发器");
+		typeArray[8] = new Array("厨卫用具及小家电", "厨房电器,电磁炉|电动榨汁机|电饭煲|电烤箱|电炉灶|豆浆机|搅拌机|咖啡机|面包机|酸奶机|微波炉|消毒器|制冰机|煮蛋器|抽油烟机|洗碗机|冰淇淋机$厨房非电器用具,案板|保温盒/保温杯|杯子|餐叉|餐具|铲|炊具|锅|火锅气炉|净水器|净水器过滤芯|咖啡压滤杯|开瓶器|筷子|烧烤架（或组件）|勺子|手动绞肉机|手动食品研磨机|吸管|灶具|瓶子|水壶|调味盒|开瓶器/削皮器|制冰格/冰棒模|打蛋器/蛋模|雪糕机$卫生用具、洁具,盆|避孕套|电动剃须刀|电动牙刷|儿童坐便器|花洒|空气净化剂|马桶|沐浴海绵|普通牙刷|手动剃须刀|水龙头|洗手液|洗衣粉|洗衣液|驱蚊剂|牙膏/牙粉|牙刷头|牙线$小家电,灯具|地板打蜡机|电吹风机|电动缝纫机、编织机|电动毛发推剪器|电风扇|电暖器|电热水器|电压整流器|电熨斗|换气扇|加湿器|空气清新机|空气清新机滤网|扫地机器人|吸尘器|增/除湿机、增除湿一体机|蒸脸器|电动鼻毛耳毛修剪器|其他小家电$其他家庭用具,纪念章|电子秤|床垫|热水袋|百叶窗|餐桌|电插头|转换器|电视机顶盒|电视天线|花瓶|开关遥控器|烟灰缸|油漆刷|收纳用品|雨伞雨具|皮革清洁剂|洗耳粉|宠物沐浴露|宠物辅食|宠物美容用品|宠物服饰|宠物牵引绳/训练绳");
+		typeArray[9] = new Array("手机及电脑办公", "电话、手机,保护套|家用电话机|手机壳|手机屏幕保护膜|手机数据线|电脑底座箱盖|电源适配器|鼠标垫|数据线$电脑外围设备,U盘|打印机（￥1000以内）|耳机/耳麦|键盘|手写板|鼠标");
+		typeArray[10] = new Array("数码、游戏及影音", "相机及配件,镜头（￥1000以内）|可拆卸式数码照相机镜头（￥1000以内）|闪光灯|支架$游戏机及配件,便携式游戏机|游戏机|游戏机手柄$影音设备及其配件、附件,录音笔|录音机|麦克风|收音机|扬声器连接器|音响连接线|音频线|信号线|其他影音设备及配件（不包含光碟）");
+		typeArray[11] = new Array("文具用品、玩具", "文具用品,笔盒|彩笔|电子阅读器|电子计算器|电子字典|钢笔|浆糊|墨盒|贴纸|涂鸦工具$玩具,玩具");
+		typeArray[12] = new Array("体育用品及户外", "球,兵乓球|篮球|排球|网球|网球拍|羽毛球|羽毛球拍|足球|乒乓球拍$多功能健身器材,动感单车|俯卧撑架|健身车|跑步机|踏步机|握力器|哑铃|综合训练器$其他体育用品,护腕护膝|滑板|滑雪镜|救生衣|口哨|跳绳|围棋|象棋|泳镜|游泳鼻夹|智能手环|游泳帽|泳衣|鱼竿/渔具|头盔$户外,安全绳|测距仪|登山杖|工具钳|防水袋/布|蜡烛|望远镜|滑冰鞋|帐篷|睡袋|户外照明");
+
+		$(function(){
+			var $category = $('#category');  
+			var $menu = $('#menu');
+			var $area = $('#area');
+			var t = 0;		
+			var tr = 0;
+			var trr = 0;
+			var mySwiper2 = {};
+			var mySwiper3 = {};
+			for(var i = 0;i<typeArray.length;i++){
+				$category.append('<div class="swiper-slide">' + typeArray[i][0] + '</div>');
+			}
+
+			var typeSecondArray = typeArray[0][1].split("$");
+			// $menu.append('<div class="swiper-slide">' +typeSecondArray[0].split(",")[0]+ '</div>');
+			for(var i = 0;i<typeSecondArray.length;i++){
+				$menu.append('<div class="swiper-slide">' +typeSecondArray[i].split(",")[0]+ '</div>');
+			}
+
+			// $area.append('<div class="swiper-slide">' +typeArray[1][1].split("$")[1].split(",")[1].split("|")[0]+ '</div>');
+			for(var i = 0;i<typeArray[1][1].split("$")[1].split(",")[1].split("|").length;i++){
+				$area.append('<div class="swiper-slide">' +typeArray[1][1].split("$")[1].split(",")[1].split("|")[i]+ '</div>');
+			}
+
+			changeColor();
+			
+			//一级菜单
+			var mySwiper1 = new Swiper('#category_container', {
+				direction : 'vertical',
+				observer:true,
+    			observeParents:true,
+    			// slidesPerView : 2,
+				onSlideChangeStart:function(swiper){
+					$menu.find('.swiper-slide').remove();
+					$area.find('.swiper-slide').remove();
+					t = swiper.activeIndex;
+					tr = 0;
+					trr = 0;
+					mySwiper2.slideTo(0);
+					mySwiper3.slideTo(0);
+					var typeSecondArray = typeArray[t][1].split("$");
+					for(var i = 0;i<typeSecondArray.length;i++){
+						$menu.append('<div class="swiper-slide">' +typeSecondArray[i].split(",")[0]+ '</div>');
+					}
+					for(var i = 0;i<typeArray[t][1].split("$")[0].split(",")[1].split("|").length;i++){
+						$area.append('<div class="swiper-slide">' +typeArray[t][1].split("$")[0].split(",")[1].split("|")[i]+ '</div>');
+					}
+					changeColor();
+        		}
+			})
+
+			//二级菜单
+			mySwiper2 = new Swiper('#menu_container', {
+				direction : 'vertical',
+				observer:true,
+    			observeParents:true,
+    			// slidesPerView : 2,
+				onSlideChangeStart:function(swiper){
+					$area.find('.swiper-slide').remove();
+					tr = swiper.activeIndex;
+					trr = 0;
+					mySwiper3.slideTo(0);
+					for(var i = 0;i<typeArray[t][1].split("$")[tr].split(",")[1].split("|").length;i++){
+						$area.append('<div class="swiper-slide">' +typeArray[t][1].split("$")[tr].split(",")[1].split("|")[i]+ '</div>');
+					}
+					changeColor();
+        		}
+			})
+
+			//三级菜单
+			mySwiper3 = new Swiper('#area_container', {
+				direction : 'vertical',
+				observer:true,
+    			observeParents:true,
+    			// slidesPerView : 2,
+    			onSlideChangeStart:function(swiper){
+					trr = swiper.activeIndex;
+					changeColor();
+        		}
+			})
+
+			function changeColor(){
+				$('.visi-box').find(".swiper-slide").css("color","#000")
+				$('#category').find(".swiper-slide").eq(t+1).css("color","#aaa");
+				$('#menu').find(".swiper-slide").eq(tr+1).css("color","#aaa");
+				$('#area').find(".swiper-slide").eq(trr+1).css("color","#aaa");
+			}
+
+			$("button").on("click",function(){
+				console.log($("#category").find(".swiper-slide").eq(t).html()+","+$("#menu").find(".swiper-slide").eq(tr).html()+","+$("#area").find(".swiper-slide").eq(trr).html())
+			})
+		})
+	</script>
+</body>
+</html>
+
+

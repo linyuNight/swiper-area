@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>HDB-查件</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+
+		<link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.7.0/css/amazeui.min.css">
+		<link rel="stylesheet" href="master.css">
+		<link rel="stylesheet" type="text/css" href="swiper.min.css">
+		<style>
+			.track_body .track_list:first-child {
+				border-top: 0;
+			}
+			
+			.hdb-text-999 {
+				color: #999999;
+			}
+			/*强制黑色字体*/
+			.hdb-text-black{
+				color: #000000 !important;
+			}
+			/**/
+			.hdb-collapse{
+				    border-top: 1px solid #dedede;
+			}
+			#user-nav .am-u-sm-12:first-child{
+				padding-top: 0.3rem;
+			}
+			#user-nav .am-u-sm-12{
+				padding-bottom: 0.3rem;
+			}
+			.track-goods-list{
+				border: 0;
+				margin-bottom:0;
+			}
+			.track-goods-list li{
+				border: 0;
+				padding-top: 0.6rem;
+				padding-bottom: 0.6rem;
+			}
+ 
+			.track-goods-list .am-g .am-u-sm-4{
+				text-align: center;
+			}
+			
+			
+			.hdb-timeline{
+				
+				padding: 0; margin: 0;
+				padding-top: 1.6rem;
+				
+			}
+			.hdb-timeline .poke:first-child{
+				top: 0;
+			}
+			.hdb-timeline .poke{
+				display:inline-block;
+				 width: 1.2rem;
+				 height: 1.2rem;
+				 border:1px solid #03a9f4;
+   				 border-radius:50%;
+   				 position: absolute;
+   				 left: -0.6rem;
+  				 top: 0.6rem;
+   				 background: #FFFFFF;
+			}
+			.hdb-timeline .content{
+				position: relative;
+				top: -0.6rem;
+				font-size: 1.4rem;
+			}
+			.hdb-timeline li{
+				border-left: 1px solid black;
+				list-style: none;
+				position: relative;
+				padding-left: 0.8rem;
+				padding-bottom: 0.8rem; 
+			}
+			.hdb-timeline .end{
+				border: 0;
+			}
+			.box-select{
+				position: absolute;
+				width:100%;
+				overflow: hidden;
+			}
+			.box-select li{
+				float:left;
+				padding:0 1rem;
+			}
+			.box-title{
+				width:100%!important;
+				height:4rem!important;
+				line-height: 4rem!important;
+				text-align: center!important;
+			}
+
+
+			#swiper3{
+				width: 100%;
+			}
+			#swiper3 .swiper-slide{
+					width: 25%;
+					text-align:center;
+					height: 50px;
+					line-height: 50px;
+					background: #ccc;
+				}
+			.active-nav{
+				background: #f2cc1c !important;
+				color:#fff;
+			}
+			#swiper-container3{
+				width: 100%;
+			}
+			#swiper-container3 .swiper-slide{
+					width: 100%;
+					height: 300px;
+					text-align:center;
+					line-height: 300px;
+					font-size: 50px;
+				}
+			#swiper-container3 .swiper-slide:nth-child(odd){
+				background:red;
+			}
+			#swiper-container3 .swiper-slide:nth-child(even){
+				background:#29d71c;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="swiper-container swiper-container-horizontal" id="swiper3" >
+			<div class="swiper-wrapper">
+				<div class="swiper-slide active-nav">
+					包箱一</div>
+				<div class="swiper-slide " >
+					包箱二</div>
+				<div class="swiper-slide ">
+					包箱三</div>
+				<div class="swiper-slide" >
+					包箱四</div>
+				<div class="swiper-slide" >
+					包箱五</div>
+				<div class="swiper-slide" >
+					包箱六</div>
+				<div class="swiper-slide" >
+					包箱七</div>
+				<div class="swiper-slide" >
+					包箱八</div>
+			</div>
+		</div>
+		<div class="swiper-container " id="swiper-container3" >
+			<div class="swiper-wrapper">
+				<div class="swiper-slide" >
+					slider1</div>
+				<div class="swiper-slide " >
+					slider2</div>
+				<div class="swiper-slide " >
+					slider3</div>
+				<div class="swiper-slide " >
+					slider4</div>
+				<div class="swiper-slide " >
+					slider5</div>
+				<div class="swiper-slide " >
+					slider6</div>
+				<div class="swiper-slide " >
+					slider7</div>
+				<div class="swiper-slide ">
+					slider8</div>
+			</div>
+	    </div>
+
+
+
+		<ul class="am-list admin-sidebar-list ">
+			<li class="am-panel">
+				<div class="am-container">
+				<div class="am-u-sm-12 am-margin-top am-margin-bottom-xs">订单编号  201607051123</div>
+				<div class="am-u-sm-12 am-margin-bottom am-text-sm">创建时间  <span class="hdb-text-999">2016-07-05 12:30</span></div>
+				</div>
+			</li>
+
+			<li class="am-panel">
+				<a class="hdb-text-black am-margin-left" data-am-collapse="{parent: '#collapase-nav-1', target: '#user-nav'}">
+					 收件人<i class="am-icon-angle-right am-fr am-margin-right"></i>
+				</a>
+				<div class="am-collapse hdb-collapse am-padding-horizontal"  id="user-nav">
+					<div class="am-container">					
+					<div class="am-u-sm-12"><span class="am-fl">陈军</span><span class="am-fr">13544094309</span></div> 
+					<div class="am-u-sm-12">广东省深圳市南山区前海路振业国际商务中心1701室</div>
+					<div class="am-u-sm-12 aam-padding-vertical-xs">460003199403238071</div>
+					<div class="am-u-sm-12"><img src=""><img src=""></div>
+					</div>
+				</div>
+			</li>
+
+			<li class="am-panel">
+				<a class="hdb-text-black am-margin-left" data-am-collapse="{parent: '#collapase-nav-1', target: '#goods-nav'}">
+					寄件商品<i class="am-icon-angle-right am-fr am-margin-right"></i>
+				</a>
+				<div class="am-collapse hdb-collapse" id="goods-nav">
+					<ul class="am-list track-goods-list">
+						<li class="am-g">
+							<div class="am-u-sm-4">品类</div>
+							<div class="am-u-sm-4">品名</div>
+							<div class="am-u-sm-4">数量</div>
+						</li>
+						<li class="am-g">
+							<div class="am-u-sm-4">品类</div>
+							<div class="am-u-sm-4">品名</div>
+							<div class="am-u-sm-4">数量</div>
+						</li>
+					</ul>
+					<div class="am-u-sm-10 am-u-sm-centered am-margin-top-sm am-padding-vertical-sm am-padding-horizontal-0 am-text-lg" style="border-top: 1px solid #dedede;">
+					  总计 3件						
+					</div>
+				</div>
+			</li>
+
+			<li class="am-panel">
+				<a class="hdb-text-black am-margin-left" data-am-collapse="{parent:'#collapase-nav-1', target:'#tracking-nav'}">
+				 物流状态  <i class="am-icon-angle-right am-fr am-margin-right"></i>
+				</a>
+				<!-- <div class="am-collapse hdb-collapse am-padding-horizontal-sm am-in" id="tracking-nav"> -->
+				<div class="my-box">
+					<!-- <div data-am-widget="tabs" class="am-tabs am-tabs-d2"> -->
+						<ul class="box-select">
+							<li class="am-active">包箱一</a></li>
+							<li class="">包箱二</a></li>
+							<li class="">包箱三</a></li>
+							<li class="">包箱四</a></li>
+							<li class="">包箱法案是的四</a></li>
+							<li class="">包箱阿萨德四</a></li>
+							<li class="">包箱阿斯蒂芬阿萨德四</a></li>
+							<li class="">包发是箱四阿萨德法师打发</a></li>
+							<li class="">包箱爱上的开发破碎地方接口是到付的数据阿佛撒四</a></li>
+						</ul>
+						
+
+						<div class="swiper-container" id="category_container">
+							<div class="swiper-wrapper am-tabs-bd" id="category">
+								
+								
+								<div data-tab-panel-1 class="swiper-slide am-tab-panel ">
+									<ul class="hdb-timeline">
+									 	<li>
+									 		<span class="poke"></span>
+									 		<span class="content">火炬二分部(0760-88284841)】的收件员【78138】已收件</span>
+									 	</li>
+									 	<li>
+									 		<span class="poke"></span>
+									 		<span class="content">火炬二分部(0760-88284841)】的收件员【78138】已收件</span>
+									 	</li>
+									 	<li class="end">
+									 		<span class="poke"></span>
+									 		<span class="content">火炬二分部(0760-88284841)】的收件员【78138】已收件</span>
+									 	</li>
+									</ul>
+								</div>
+								<div data-tab-panel-2 class="swiper-slide am-tab-panel ">
+									<ul class="hdb-timeline">
+									 	<li>
+									 		<span class="poke"></span>
+									 		<span class="content">火炬二分部(0760-88284841)】的收件员【78138】已收件</span>
+									 	</li>
+									 	<li>
+									 		<span class="poke"></span>
+									 		<span class="content">火炬二分部(0760-88284841)】的收件员【78138】已收件</span>
+									 	</li>
+									 	<li class="end">
+									 		<span class="poke"></span>
+									 		<span class="content">火炬二分部(0760-88284841)】的收件员【78138】已收件</span>
+									 	</li>
+									</ul>
+								</div>
+								<div data-tab-panel-3 class="swiper-slide am-tab-panel ">
+									<ul class="hdb-timeline">
+									 	<li>
+									 		<span class="poke"></span>
+									 		<span class="content">火炬二分部(0760-88284841)】的收件员【78138】已收件</span>
+									 	</li>
+									 	<li>
+									 		<span class="poke"></span>
+									 		<span class="content">火炬二分部(0760-88284841)】的收件员【78138】已收件</span>
+									 	</li>
+									 	<li class="end">
+									 		<span class="poke"></span>
+									 		<span class="content">火炬二分部(0760-88284841)】的收件员【78138】已收件</span>
+									 	</li>
+									</ul>
+								</div>
+								<div data-tab-panel-4 class="swiper-slide am-tab-panel ">
+									<ul class="hdb-timeline">
+									 	<li>
+									 		<span class="poke"></span>
+									 		<span class="content">火炬二分部(0760-88284841)】的收件员【78138】已收件</span>
+									 	</li>
+									 	<li>
+									 		<span class="poke"></span>
+									 		<span class="content">火炬二分部(0760-88284841)】的收件员【78138】已收件</span>
+									 	</li>
+									 	<li class="end">
+									 		<span class="poke"></span>
+									 		<span class="content">火炬二分部(0760-88284841)】的收件员【78138】已收件</span>
+									 	</li>
+									</ul>
+								</div>
+								<div data-tab-panel-5 class="swiper-slide am-tab-panel ">
+									<ul class="hdb-timeline">
+									 	<li>
+									 		<span class="poke"></span>
+									 		<span class="content">火炬二分部(0760-88284841)】的收件员【78138】已收件</span>
+									 	</li>
+									 	<li>
+									 		<span class="poke"></span>
+									 		<span class="content">火炬二分部(0760-88284841)】的收件员【78138】已收件</span>
+									 	</li>
+									 	<li class="end">
+									 		<span class="poke"></span>
+									 		<span class="content">火炬二分部(0760-88284841)】的收件员【78138】已收件</span>
+									 	</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					<!-- </div> -->
+				</div>
+			</li>
+		</ul>
+
+		
+
+		<!--[if (gte IE 9)|!(IE)]><!-->
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<!--<![endif]-->
+		<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="http://cdn.amazeui.org/amazeui/2.7.0/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+		<script src="http://cdn.amazeui.org/amazeui/2.7.0/js/amazeui.min.js"></script>
+		<!-- HTML生成的代码 <script src="source/src/add_goods_html.js"></script>-->
+		<script type="text/javascript" src="swiper.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				for(var i=0;i<$(".box-select").find("li").length;i++){
+					$(".box-select").find("li").eq(i).on("click",function(e){
+						$(".box-title").html($(e.target).html());
+					})
+				}
+				$(".box-title").html($(".box-select").find("li").eq(0).find("a").html());
+			})
+		</script>
+		<script type="text/javascript">
+			// $(".my-box").
+		</script>
+
+		<script type="text/javascript">
+	        swiper3();
+		        function swiper3(){
+		    	var mySwiper3 = new Swiper('#swiper3', {
+
+		    		watchSlidesProgress : true,
+		    		//可见slide增加一个classname，默认为'swiper-slide-visible'。
+					watchSlidesVisibility : true,
+					//自动显示几个slide 页 根据swiper和contianer的宽度 自动显示
+					slidesPerView : "auto",
+					resistanceRatio:0,
+
+					// 重要参数，获取Swiper对象初始化参数，或者重写该参数 不是所有参数都可以重写
+					//mySwiper.params.autoplay=200;
+					onTap: function(){
+						//导航栏点击进入相对应的详细页面
+						// console.log(mySwiper3.activeIndex);
+						mySwiper4.slideTo( mySwiper3.clickedIndex);
+					}
+		    	});
+		    	//clickedIndex 和 activeIndex 差别
+		    	var mySwiper4 = new Swiper('#swiper-container3', {
+		    		resistanceRatio:0,
+		    		onSlideChangeStart: function(){
+		    			//详情页变化 导致当前导航页高亮变化
+						updateNavPosition();
+					}
+		    	});
+		    	function updateNavPosition(){
+		    		// console.log(mySwiper4.activeIndex)
+		    		var currentIndex = mySwiper4.activeIndex;
+					$('#swiper3  .active-nav').removeClass('active-nav');
+					var activeNav = $('#swiper3 .swiper-slide').eq(mySwiper4.activeIndex).addClass('active-nav');
+					// console.log(activeNav.index())
+					// console.log(mySwiper3.activeIndex)
+					if (!activeNav.hasClass('swiper-slide-visible')) {
+						console.log(activeNav.index())
+						console.log(mySwiper3.activeIndex)
+						if (activeNav.index()>mySwiper3.activeIndex){
+							var thumbsPerNav = Math.floor(mySwiper3.width/activeNav.width())-1;  //求出可视宽度
+							// console.log(thumbsPerNav)
+							mySwiper3.slideTo(activeNav.index()-thumbsPerNav)
+						}
+						else {
+							mySwiper3.slideTo(activeNav.index())
+						}
+					}
+		    	}
+		    }
+		</script>
+	</body>
+
+</html>

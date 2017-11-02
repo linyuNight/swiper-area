@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>HDB-寄件</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.7.0/css/amazeui.min.css">
+		<link rel="stylesheet" href="master.css">
+		<style type="text/css">
+			html,body{
+				width:100%;
+				height:100%;
+			}
+			.goods-box{
+				height:40%;
+				margin-bottom: 3rem; 
+				overflow: auto;
+			}
+		</style>
+	</head>
+
+	<body>	
+		<button id="test_btn">清空商品缓存</button>
+		<div class="am-g am-g-fixed hdb-background">
+			<form class="am-form">
+				<div class="am-u-sm-12 am-margin-vertical-xs">
+					<div class="am-u-sm-2 am-text-center"><span class="am-badge am-badge-success am-round am-text-sm hdb-round">寄</span></div>
+					<div class="am-u-sm-10 am-g-collapse" style="padding-left: 2rem;">
+						<div class="am-u-sm-5 am-text-center">
+							<input type="text" class="hdb-input am-fl am-text-center" placeholder="寄件人姓名" style="color: #000" id="my-mane">
+						</div>
+						<div class="am-u-sm-1 am-text-center">
+							<span class="hdb-hr"></span>
+						</div>
+						<div class="am-u-sm-6 am-text-center">
+							<input type="number" class="hdb-input am-fl  am-text-center" placeholder="联系电话" style="color: #000" id="my-phone">
+						</div>
+						<!--<input type="text" class="hdb-input am-fl" placeholder="寄件人姓名" style="width: 42%;  color: #cccccc">
+						<div class="am-fl hdb-hr"><span></span></div>
+						<input type="text" class="hdb-input am-fl" placeholder="联系电话" style="width: 44%; color: #cccccc;">
+					-->
+					</div>
+				</div>
+
+				<div class="am-u-sm-12 am-margin-vertical-xs" style="border-top: 1px solid #f2f2f2" id="the-accept-btn" data-am-modal="{target: '#hdb-select'}">
+					<div class="am-u-sm-2 am-text-center"><span class="am-badge am-badge-success am-round am-text-sm hdb-round" style="background-color: #6666ff;">收</span></div>
+
+					<!--显示和隐藏-->
+					<div class="am-u-sm-10 accept" style="padding-left: 2rem;     min-height: 3.4rem;">
+						<span style=" color: #cccccc; display: inline-block; line-height: 3.4rem; float: right;">请选择收件人<i class="am-icon-angle-right am-padding-left-xs"></i></span>
+					</div>
+					
+					<div class="am-u-sm-10 accept-hasselect" style="padding-left: 2rem;min-height: 3.4rem;overflow:auto;height:6rem">
+						<div class="am-u-sm-10 am-text-left  am-padding-xs">
+							陈军 <span class="am-margin-left-lg">13544094309</span>
+						</div>
+						<div class="am-u-sm-12  am-padding-xs  am-text-left list-address">
+							广东省深圳市南山区前海路振业国际商务中心1701室
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<div class="am-g am-g-fixed hdb-background  am-margin-top-lg">
+			<div class="am-u-sm-12 am-margin-vertical-xs am-padding-xs ">
+				<i class="am-icon-gift am-icon-md am-padding-left-lg"></i>
+				<span class="am-padding-left-lg am-text-lg">寄件商品</span>
+			</div>
+		</div>
+		
+		<!--商品列表-->
+		<div class="goods-box">
+			<div class="am-g am-g-fixed hdb-background  am-margin-top-xs" id="send-goods">
+				<!-- <div class="am-u-sm-12 am-margin-vertical-xs am-padding-horizontal-0 am-margin-top-0">
+					<ul class="am-list am-margin-horizontal-0 am-padding-right-0 am-padding-left  am-text-default am-margin-bottom-0 goods_list">
+						<li>
+							<div class="am-u-sm-6 goods_name am-fl">根据某个字符串</div>
+							<div class="am-u-sm-3 goods_num am-text-center" >12aff</div>
+							<div class="am-u-sm-3 goods_edit am-fr">
+								<i class="am-icon-edit am-fl btn-modify"></i>
+								<i class="am-icon-trash am-fr btn-delete"></i></div>
+						</li>
+						
+					</ul>
+				</div> -->
+			</div>
+			<div class="am-g am-g-fixed hdb-background am-margin-top-xs am-text-center" style="color: #0e90d2;margin-bottom:1rem">
+				<a href="add_goods.html">
+				<div class="am-u-sm-12 am-margin-vertical-xs">
+					<i class="am-text-lg">+</i>
+					<span class="am-padding-left-sm">添加寄件商品</span>
+				</div>
+				</a>
+			</div>
+		</div>
+
+		<div class="am-modal-actions" id="hdb-select">
+			<div class="am-modal-actions-group am-margin-0">
+				<ul class="am-list">
+					<li class="am-modal-actions-header" style="color: #333333;">
+						<i class="am-icon-close am-fl" data-am-modal-close></i> 选择联系人
+						<i class="am-icon-plus am-fr" onclick="location.href='add_recipients.html'"></i>
+					</li>
+					<li class="select-list load-person">
+						<!-- <div class="am-g am-g-collapse am-margin-top">
+							<div class="am-u-sm-2  am-padding-xs">
+								<i class="am-icon-check" style="color: #0e90d2;"></i>
+							</div>
+							<div class="am-u-sm-10">
+								<div class="am-u-sm-10 am-text-left  am-padding-xs">
+									陈军 <span class="am-margin-left-lg">13544094309</span>
+								</div>
+								<div class="am-u-sm-2" style="position: relative;   top: 0.75rem;"><a href="javascript:void(0)">编辑</a></div>
+								<div class="am-u-sm-12  am-padding-xs list-address">
+									广东省深圳市南山区前海路振业国际商务中心1701室
+								</div>
+							</div>
+						</div> -->
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="am-container">
+			<div class="am-u-sm-10 am-u-sm-centered" >
+		  		<button type="button" class="am-btn am-btn-secondary am-radius  am-btn-block" onclick="location.href='order.html'">提交</button>
+		  	</div>
+		</div>
+
+		<!--[if (gte IE 9)|!(IE)]><!-->
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<!--<![endif]-->
+		<!--[if lte IE 8 ]>
+		<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+		<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+		<script src="http://cdn.amazeui.org/amazeui/2.7.0/js/amazeui.ie8polyfill.min.js"></script>
+		<![endif]-->
+		<script src="http://cdn.amazeui.org/amazeui/2.7.0/js/amazeui.min.js"></script>
+		<script type="text/javascript" src="json.js"></script>
+		<script type="text/javascript">
+		$(function(){
+			$("#test_btn").on("click",function(){
+				localStorage.clear();
+			})
+			if(localStorage.getItem("my_name")!=undefined){
+				$("#my-mane").val(localStorage.getItem("my_name"));
+			}
+			if(localStorage.getItem("my_phone")!=undefined){
+				$("#my-phone").val(localStorage.getItem("my_phone"));
+			}
+
+			//修改 上面添加了id
+			$("#my-mane").on("blur",function(){
+				localStorage.setItem("my_name",$("#my-mane").val());
+			})
+			$("#my-phone").on("blur",function(){
+				localStorage.setItem("my_phone",$("#my-phone").val());
+			})
+
+			$(".accept-hasselect").hide();
+
+			//修改
+			if(localStorage.getItem("select_peple_name")!=undefined){
+				$(".accept").hide();
+				var acceptHtmlSrc = '<div class="am-u-sm-10 am-text-left  am-padding-xs">'+localStorage.getItem("select_peple_name")+'<span class="am-margin-left-lg">'+localStorage.getItem("select_peple_phone")+'</span></div><div class="am-u-sm-12  am-padding-xs list-address">'+localStorage.getItem("select_peple_address")+'</div>';
+				$(".accept-hasselect").html(acceptHtmlSrc);
+				$(".accept-hasselect").show();
+			}
+			
+			localStorage.setItem("thetruetrue",0);
+			//azz对象
+			for(var i=0;i<azz.employees.length;i++){
+				var htmlSrc = '<div class="am-g am-g-collapse am-margin-top btn-person-select" name="'+i+'"><div class="am-u-sm-2  am-padding-xs"><i class="" style="color: #0e90d2;"></i></div><div class="am-u-sm-10"><div class="am-u-sm-6 am-text-left  am-padding-xs">'+azz.employees[i].firstName+' <span class="am-margin-left-lg">'+azz.employees[i].phone+'</span></div><div class="am-u-sm-6" style="position: relative;   top: 0.75rem;"><a class="un-select" onclick="location.href=\'add_recipients.html\'">编辑</a></div><div class="am-u-sm-12  am-padding-xs  am-text-left list-address">'+azz.employees[i].address+'</div></div></div>'
+				$(".load-person").append(htmlSrc);
+
+				//选择收件人
+				$(".btn-person-select").eq(i).on("click",function(e){
+					// console.log(e.target==$(".un-select")[0]);
+					// !myHasClass(e.target,"un-select")
+					// !$(e.target).hasClass("un-select")
+
+					// e.stopPropagation();
+					if(!myHasClass(e.target,"un-select")){
+						console.log($('e.target'));
+						var mytarget = $(e.target).closest(".btn-person-select");
+						var index = mytarget.attr("name");
+						mytarget.find("i").addClass("am-icon-check");
+						mytarget.siblings().find("i").removeClass("am-icon-check");
+						$(".accept").hide();
+						var acceptHtmlSrc = '<div class="am-u-sm-10 am-text-left  am-padding-xs">'+azz.employees[index].firstName+'<span class="am-margin-left-lg">'+azz.employees[index].phone+'</span></div><div class="am-u-sm-12  am-padding-xs  am-text-left list-address" style="color:#ccc">'+azz.employees[index].address+'</div>';
+						$(".accept-hasselect").html(acceptHtmlSrc);
+						$(".accept-hasselect").show();
+						//修改
+						localStorage.setItem("select_peple_name",azz.employees[index].firstName);
+						localStorage.setItem("select_peple_phone",azz.employees[index].phone);
+						localStorage.setItem("select_peple_address",azz.employees[index].address);
+						$("#hdb-select").modal('close')
+					}
+				})
+			}
+
+			function myHasClass(ele,cls) { 
+				return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)')); 
+			} 
+			// $.ajax({ 
+			//     type: "GET", 	
+			// 	url: "json.txt",
+			// 	dataType: "json",
+			// 	// jsonpCallback:"success_jsonpCallback",
+			// 	success: function(data) {
+			// 		if (data.success) { 
+						
+			// 			// var mydata = JSON.parse(data);
+			// 			alert(data);
+			// 		} 
+			// 	}
+				    
+			// });
+			
+
+			//进入页面读取商品列表
+			// localStorage.setItem("thetruetrue",0);
+			// console.log(localStorage.getItem("thesev2"));
+			if(localStorage.getItem("thesev2") != undefined){
+				var obj_total_str = localStorage.getItem("thesev2");
+				// console.log(obj_total_str);
+				var obj_total_arr = obj_total_str.split("$");
+				var len = obj_total_arr.length
+				for(var i=0;i<len;i++){
+					var goods = JSON.parse(obj_total_arr[i]);
+					var goods_html = '<div class="am-u-sm-12 am-margin-vertical-xs am-padding-horizontal-0 am-margin-top-0"'+'index='+goods.index+'><ul class="am-list am-margin-horizontal-0 am-padding-right-0 am-padding-left  am-text-default am-margin-bottom-0 goods_list"><li><div class="am-u-sm-6 goods_name am-fl">'+goods.name+'</div><div class="am-u-sm-3 goods_num am-text-center" >'+'×'+goods.count+'</div><div class="am-u-sm-3 goods_edit am-fr"><i class="am-icon-edit am-fl btn-modify"></i><i class="am-icon-trash am-fr btn-delete"></i></div></li></ul></div>';
+					$("#send-goods").append(goods_html);
+				}
+			}
+			//点击删除
+			$('.btn-delete').on("click",function(){
+				localStorage.getItem("thetruetrue",0);
+				var div_index = $(this).closest('.am-u-sm-12')[0].getAttribute("index");
+				$(this).closest('.am-u-sm-12').remove();
+				for(var j=0;j<len;j++){
+					if(obj_total_arr[j]!=undefined){
+						var goods_delet = JSON.parse(obj_total_arr[j]);
+					}
+					// console.log(goods_delet.index);
+					if(goods_delet.index == div_index){
+						// console.log(goods_delet.index+"@@"+div_index);
+						// console.log(obj_total_arr[0]);
+						obj_total_arr.splice(j,1);
+						// console.log(obj_total_arr);
+						if(obj_total_arr.length>0){
+							obj_total_str = obj_total_arr.join("$");
+							localStorage.setItem("thesev2",obj_total_str);
+						}else{
+							localStorage.removeItem("thesev2");
+						}
+					}
+				}
+				
+			})
+
+			//点击修改
+			$('.btn-modify').on("click",function(){
+				localStorage.setItem("thetruetrue",1);
+				var div_index = $(this).closest('.am-u-sm-12')[0].getAttribute("index");
+				// $(this).closest('.am-u-sm-12').remove();
+				for(var j=0;j<len;j++){
+					if(obj_total_arr[j]!=undefined){
+						var goods_temporary = JSON.parse(obj_total_arr[j]);
+					}
+					// console.log(goods_delet.index);
+					if(goods_temporary.index == div_index){
+						// console.log(goods_delet.index+"@@"+div_index);
+						localStorage.setItem("goods_temporary1",JSON.stringify(goods_temporary));
+						// obj_total_arr.splice(j,1);
+						// if(obj_total_arr.length>0){
+						// 	obj_total_str = obj_total_arr.join("$");
+						// 	localStorage.setItem("thesev2",obj_total_str)
+						// }else{
+						// 	localStorage.removeItem("thesev2");
+						// }
+					}
+				}
+				location.href='add_goods.html';
+			})
+
+			$("#the-accept-btn").on("click",function(){
+				$("#the-accept-btn").modal("#hdb-select");
+				// $("#the-accept-btn").modal("close");
+			})
+		})
+		</script>
+	</body>
+</html>

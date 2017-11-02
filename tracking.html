@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>HDB-查件</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.7.0/css/amazeui.min.css">
+		<link rel="stylesheet" href="master.css">
+		<style>
+			.track_body .track_list:first-child{
+				border-top: 0;				
+			}
+			.hdb-text-999{
+				color: #999999;
+			}
+		</style>
+	</head>
+
+	<body>
+    <div class="am-g content-box">
+      <div class="am-alert am-alert-danger" id="my-alert" style="display: none">
+        <p>开始日期应小于结束日期！</p>
+      </div>
+      <div class="am-g am-g-collapse">
+        <div class="am-u-sm-6">
+          <button type="button" class="am-btn am-btn-default am-u-sm-6" id="my-start">开始</button><span class="am-u-sm-6" id="my-startDate" style="text-align: center;line-height:3rem">2016-7-7</span>
+        </div>
+        <div class="am-u-sm-6">
+          <button type="button" class="am-btn am-btn-default am-u-sm-6" id="my-end">结束</button><span class="am-u-sm-6" id="my-endDate" style="text-align: center;line-height:3rem">2016-7-8</span>
+        </div>
+        <div class="am-u-sm-12 search">
+          <button type="button" class="am-btn am-btn-default am-margin-right am-btn-success" style="margin:0 auto;display:block;width:100%">查询</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="am-g am-g-fixed am-g-collapse track_body  am-padding-horizontal-0">
+      <div class="am-u-sm-12">
+      	<ul class="am-list track_list">
+      		<li class="am-container " onclick="location.href='tracking_info.html'">
+      			<div class="am-u-sm-6">
+      				<div class="track_oid am-padding-vertical-sm">订单编号 10180</div>
+      				<div class="tack_product hdb-text-999 am-padding-vertical-xs">全脂奶粉</div>
+      			</div>
+      			<div class="am-u-sm-6 am-text-right">
+      				<div class="track_time hdb-text-999 am-padding-vertical-sm am-text-xs" style="margin-top:5px;" >1分钟前</div>
+      				<div class="track_type hdb-text-999 am-padding-vertical-xs">HDB签收</div>
+      			</div>
+      		</li>
+      			 
+      		<li class="am-container "  onclick="location.href='tracking_info.html'">
+      			<div class="am-u-sm-6">
+      				<div class="track_oid am-padding-vertical-sm">订单编号 10180</div>
+      				<div class="tack_product hdb-text-999 am-padding-vertical-xs">全脂奶粉</div>
+      			</div>
+      			<div class="am-u-sm-6 am-text-right">
+      				<div class="track_time hdb-text-999 am-padding-vertical-sm am-text-xs" style="margin-top:5px;" >1分钟前</div>
+      				<div class="track_type hdb-text-999 am-padding-vertical-xs">HDB签收</div>
+      			</div>
+      		</li>	
+      	</ul>
+      </div>
+    </div>
+		
+		<!--[if (gte IE 9)|!(IE)]><!-->
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<!--<![endif]-->
+		<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="http://cdn.amazeui.org/amazeui/2.7.0/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+		<script src="http://cdn.amazeui.org/amazeui/2.7.0/js/amazeui.min.js"></script>
+		<!-- HTML生成的代码 <script src="source/src/add_goods_html.js"></script>-->
+    <script type="text/javascript" src="swiper.min.js"></script>
+    <script>
+      $(function() {
+        var startDate = new Date(2016, 7, 6);
+        var endDate = new Date(2016, 7, 8);
+        var $alert = $('#my-alert');
+        $('#my-start').datepicker().
+          on('changeDate.datepicker.amui', function(event) {
+            if (event.date.valueOf() > endDate.valueOf()) {
+              $alert.find('p').text('开始日期应小于结束日期！').end().show();
+            } else {
+              $alert.hide();
+              startDate = new Date(event.date);
+              $('#my-startDate').text($('#my-start').data('date'));
+            }
+            $(this).datepicker('close');
+          });
+
+        $('#my-end').datepicker().
+          on('changeDate.datepicker.amui', function(event) {
+            if (event.date.valueOf() < startDate.valueOf()) {
+              $alert.find('p').text('结束日期应大于开始日期！').end().show();
+            } else {
+              $alert.hide();
+              endDate = new Date(event.date);
+              $('#my-endDate').text($('#my-end').data('date'));
+            }
+            $(this).datepicker('close');
+          });
+      });
+    </script>
+	</body>
+</html>
